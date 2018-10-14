@@ -4,14 +4,14 @@
 #
 Name     : perl-Test-utf8
 Version  : 1.01
-Release  : 2
+Release  : 3
 URL      : http://search.cpan.org/CPAN/authors/id/M/MA/MARKF/Test-utf8-1.01.tar.gz
 Source0  : http://search.cpan.org/CPAN/authors/id/M/MA/MARKF/Test-utf8-1.01.tar.gz
 Summary  : 'handy utf8 tests'
 Group    : Development/Tools
 License  : Artistic-1.0-Perl
-Requires: perl-Test-utf8-doc
-BuildRequires : perl(inc::Module::Install)
+BuildRequires : buildreq-cpan
+BuildRequires : perl(Module::Install)
 
 %description
 NAME
@@ -21,12 +21,13 @@ SYNOPSIS
 is_valid_string($string);   # check the string is valid
 is_sane_utf8($string);      # check not double encoded
 
-%package doc
-Summary: doc components for the perl-Test-utf8 package.
-Group: Documentation
+%package dev
+Summary: dev components for the perl-Test-utf8 package.
+Group: Development
+Provides: perl-Test-utf8-devel = %{version}-%{release}
 
-%description doc
-doc components for the perl-Test-utf8 package.
+%description dev
+dev components for the perl-Test-utf8 package.
 
 
 %prep
@@ -55,9 +56,9 @@ make TEST_VERBOSE=1 test
 %install
 rm -rf %{buildroot}
 if test -f Makefile.PL; then
-make pure_install PERL_INSTALL_ROOT=%{buildroot}
+make pure_install PERL_INSTALL_ROOT=%{buildroot} INSTALLDIRS=vendor
 else
-./Build install --installdirs=site --destdir=%{buildroot}
+./Build install --installdirs=vendor --destdir=%{buildroot}
 fi
 find %{buildroot} -type f -name .packlist -exec rm -f {} ';'
 find %{buildroot} -depth -type d -exec rmdir {} 2>/dev/null ';'
@@ -66,8 +67,8 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files
 %defattr(-,root,root,-)
-/usr/lib/perl5/site_perl/5.26.1/Test/utf8.pm
+/usr/lib/perl5/vendor_perl/5.26.1/Test/utf8.pm
 
-%files doc
+%files dev
 %defattr(-,root,root,-)
-%doc /usr/share/man/man3/*
+/usr/share/man/man3/Test::utf8.3
