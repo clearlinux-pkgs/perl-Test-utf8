@@ -4,7 +4,7 @@
 #
 Name     : perl-Test-utf8
 Version  : 1.01
-Release  : 3
+Release  : 4
 URL      : http://search.cpan.org/CPAN/authors/id/M/MA/MARKF/Test-utf8-1.01.tar.gz
 Source0  : http://search.cpan.org/CPAN/authors/id/M/MA/MARKF/Test-utf8-1.01.tar.gz
 Summary  : 'handy utf8 tests'
@@ -67,7 +67,7 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files
 %defattr(-,root,root,-)
-/usr/lib/perl5/vendor_perl/5.26.1/Test/utf8.pm
+/usr/lib/perl5/vendor_perl/5.28.0/Test/utf8.pm
 
 %files dev
 %defattr(-,root,root,-)
