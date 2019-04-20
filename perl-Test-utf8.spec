@@ -21,6 +21,16 @@ SYNOPSIS
 is_valid_string($string);   # check the string is valid
 is_sane_utf8($string);      # check not double encoded
 
+%package dev
+Summary: dev components for the perl-Test-utf8 package.
+Group: Development
+Provides: perl-Test-utf8-devel = %{version}-%{release}
+Requires: perl-Test-utf8 = %{version}-%{release}
+
+%description dev
+dev components for the perl-Test-utf8 package.
+
+
 %prep
 %setup -q -n Test-utf8-1.01
 
@@ -58,3 +68,8 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files
 %defattr(-,root,root,-)
+/usr/lib/perl5/vendor_perl/5.28.2/Test/utf8.pm
+
+%files dev
+%defattr(-,root,root,-)
+/usr/share/man/man3/Test::utf8.3
