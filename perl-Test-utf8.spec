@@ -4,12 +4,13 @@
 #
 Name     : perl-Test-utf8
 Version  : 1.01
-Release  : 11
+Release  : 12
 URL      : http://search.cpan.org/CPAN/authors/id/M/MA/MARKF/Test-utf8-1.01.tar.gz
 Source0  : http://search.cpan.org/CPAN/authors/id/M/MA/MARKF/Test-utf8-1.01.tar.gz
-Summary  : handy utf8 tests
+Summary  : 'handy utf8 tests'
 Group    : Development/Tools
 License  : Artistic-1.0-Perl
+Requires: perl-Test-utf8-perl = %{version}-%{release}
 BuildRequires : buildreq-cpan
 BuildRequires : perl(Module::Install)
 
@@ -31,14 +32,24 @@ Requires: perl-Test-utf8 = %{version}-%{release}
 dev components for the perl-Test-utf8 package.
 
 
+%package perl
+Summary: perl components for the perl-Test-utf8 package.
+Group: Default
+Requires: perl-Test-utf8 = %{version}-%{release}
+
+%description perl
+perl components for the perl-Test-utf8 package.
+
+
 %prep
 %setup -q -n Test-utf8-1.01
+cd %{_builddir}/Test-utf8-1.01
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-export LANG=C
+export LANG=C.UTF-8
 if test -f Makefile.PL; then
 %{__perl} Makefile.PL
 make  %{?_smp_mflags}
@@ -48,7 +59,7 @@ else
 fi
 
 %check
-export LANG=C
+export LANG=C.UTF-8
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
@@ -68,8 +79,11 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files
 %defattr(-,root,root,-)
-/usr/lib/perl5/vendor_perl/5.28.2/Test/utf8.pm
 
 %files dev
 %defattr(-,root,root,-)
 /usr/share/man/man3/Test::utf8.3
+
+%files perl
+%defattr(-,root,root,-)
+/usr/lib/perl5/vendor_perl/5.30.1/Test/utf8.pm
