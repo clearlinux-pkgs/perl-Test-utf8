@@ -4,7 +4,7 @@
 #
 Name     : perl-Test-utf8
 Version  : 1.02
-Release  : 16
+Release  : 17
 URL      : https://cpan.metacpan.org/authors/id/M/MA/MARKF/Test-utf8-1.02.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/M/MA/MARKF/Test-utf8-1.02.tar.gz
 Summary  : 'handy utf8 tests'
