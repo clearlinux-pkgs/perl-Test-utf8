@@ -7,7 +7,7 @@
 #
 Name     : perl-Test-utf8
 Version  : 1.03
-Release  : 31
+Release  : 32
 URL      : https://cpan.metacpan.org/authors/id/S/SC/SCHWIGON/Test-utf8-1.03.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/S/SC/SCHWIGON/Test-utf8-1.03.tar.gz
 Summary  : 'handy utf8 tests'
